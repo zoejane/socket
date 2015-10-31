@@ -1,16 +1,11 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 
-'''
-    Simple udpp socketserver
-    Zoe Jane (dadac123@gmail.com)
-'''
-
 import socket
 import sys
 
 HOST = '' # Symbolic name meaning all available interfaces
-PORT = 8888 # Arbitary non-privileged port
+PORT = 1234 # Arbitary non-privileged port
 
 # Datagram(udp) socket
 try:
@@ -39,11 +34,22 @@ while 1:
     if not data:
         break
 
-    reply='帮你记录下来啦。日记：'+data
-
-    s.sendto(reply,addr)
 
     today=datetime.now()
-    print today.strftime("%y/%m/%d") +' '+data.strip()
+    diary=str(today.strftime("%y/%m/%d") +' '+data.strip())
+    print diary
+
+        
+    diaryFile = open('diary.txt','a')
+    diaryFile.write('\n'+diary)
+    diaryFile = open('diary.txt')
+    diary = diaryFile.read()
+    print('============日记============')
+    print(diary)
+    
+   
+    reply='帮你记录下来啦。日记：'+data
+    s.sendto(reply,addr)    
 
 s.close()
+diaryFile.close()
