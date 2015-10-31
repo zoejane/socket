@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import time
+import datetime
 
 '''
     Simple udpp socketserver
@@ -42,6 +42,8 @@ while 1:
     reply='OK...'+data
 
     s.sendto(reply,addr)
-    print 'time.strftime('%Y/%m/%d')+Message['+addr[0]+':'+str(addr[1])+']-'+data.strip()
+
+    today=datetime.now()
+    print 'today.strftime("%y/%m/%d")+Message['+addr[0]+':'+str(addr[1])+']-'+data.strip()
 
 s.close()
