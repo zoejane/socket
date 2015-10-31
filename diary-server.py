@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import datetime
+from datetime import datetime
 
 '''
     Simple udpp socketserver
@@ -39,11 +39,11 @@ while 1:
     if not data:
         break
 
-    reply='OK...'+data
+    reply='帮你记录下来啦。日记：'+data
 
     s.sendto(reply,addr)
 
     today=datetime.now()
-    print 'today.strftime("%y/%m/%d")+Message['+addr[0]+':'+str(addr[1])+']-'+data.strip()
+    print today.strftime("%y/%m/%d") +' '+data.strip()
 
 s.close()
