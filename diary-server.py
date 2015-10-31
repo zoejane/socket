@@ -38,10 +38,10 @@ while 1:
     today=datetime.now()
     diary=str(today.strftime("%y/%m/%d") +' '+data.strip())
     print diary
-
-        
+ 
     diaryFile = open('diary.txt','a')
     diaryFile.write('\n'+diary)
+    diaryFile.close()
     diaryFile = open('diary.txt')
     diary = diaryFile.read()
     print('============日记============')
@@ -52,4 +52,4 @@ while 1:
     s.sendto(reply,addr)    
 
 s.close()
-diaryFile.close()
+
